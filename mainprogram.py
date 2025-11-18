@@ -13,11 +13,26 @@ Kamus :
 """
 import time
 import json
-database_buku = {}
+#contoh : 
+database_buku = {
+    "genre": {
+        1 : ["Judul",1],
+        2 : ["Judul",1]
+    }
+    
+}
+database_peminjamanbuku = {}
+
 counter = 1
 
 def access_and_read_json():
-    pass
+    global database_buku
+    try:
+        with open(f"Database_buku.json","r") as fileinput:
+            database_buku = json.load(fileinput)
+            
+    except FileNotFoundError: 
+        pass
 def save_peminjaman():
     pass
 def cek_denda():
@@ -42,4 +57,7 @@ def redo():
     pass
 
 def selector(): 
-    pass
+    access_and_read_json()
+    
+
+selector()
