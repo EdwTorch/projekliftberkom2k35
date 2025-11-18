@@ -11,3 +11,35 @@ Deskripsi Program :
 Kamus : 
 
 """
+import time
+import json
+database_buku = {}
+counter = 1
+
+def access_and_read_json():
+    pass
+def save_peminjaman():
+    pass
+def cek_denda():
+    pass
+def pembayaran():
+    pass
+def tampilandanketersediaan_buku(): #Status ketersediaan buku dan Status buku sisa (Per 25 Judul) jadi next harus ada 
+    pass
+
+def add_peminjaman_buku():
+    pass
+
+def status_peminjaman_buku():
+    pass
+
+def pengembalian_buku():
+    pass
+def searchbuku():
+    pass
+
+def redo():
+    pass
+
+def selector(): 
+    pass
