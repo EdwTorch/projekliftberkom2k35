@@ -96,48 +96,47 @@ def searchbuku():
     global database_buku
     global datagenre 
     global list_jumlahbuku
+    global genre
+    validasi_genre = False
+    cek_genre = False 
 
-    print("1. Cari berdasarkan kategori")
+    print("1. Cari berdasarkan genre")
     print("2. Cari berdasarkan judul")
     pilihan_pencarian = input("Masukkan pilihan (1/2): ")
 
-    #Pencarian berdasarkan kategori 
+    #Pencarian berdasarkan genre 
     if (pilihan_pencarian == "1"): 
-        print("\nKategori yang tersedia: ")
-        for i, j in enumerate(datagenre): 
-            print(f"{i+1}. {j}")
+        tampilkan_genre(datagenre)
         
-        pilih_kategori = input("Masukkan nomor kategori: ")
-        try: 
-            index_kategori = int(pilih_kategori) - 1
-            kategori = datagenre[index_kategori]
-        except: 
-            print("Input tidak valid")
-            return 
+        j = 0 
+        while validasi_genre == False: 
+            pilih_genre = input("Masukkan nama genre: ")
+            pilih_genre = pilih_genre.upper()
+            while cek_genre == False and j < len(datagenre): 
+                if (pilih_genre == datagenre[j]): 
+                    cek_genre = True
+                else: 
+                    j += 1
+
+            if (cek_genre == True): 
+                validasi_genre = True 
+
+            else:
+                j = 0 
+                print("Genre tidak ditemukan")
         
-        print(f"\nDaftar Buku dalam Kategori {kategori}")
-        for id_buku, info_buku in database_buku[kategori].items():
-            judul = info_buku[0]
-            stok = info_buku[1]
-            print(f"{id_buku}. {judul} (stok: {stok})") 
+        print(f"\nDaftar Buku dalam Genre {pilih_genre}")
+        indexgenre = j 
+        page_lokal = 1
+        tampilandanketersediaan_buku(pilih_genre, page_lokal, indexgenre)
 
     #Pencarian berdasarkan judul 
     elif (pilihan_pencarian == "2"): 
-        keyword = input("Masukkan judul/keyword: ").lower()
+        keyword = input("Masukkan keyword judul: ").upper()
         print("\nHasil Pencarian")
         found = False 
 
-        for kategori, daftar_buku in database_buku.items():
-            for id_buku, info_buku in daftar_buku.items():
-                judul = info_buku[0]
-                stok = info_buku[1]
-
-                if keyword in judul.lower():
-                    print(f"[{kategori}] {id_buku}. {judul} (stok: {stok})")
-                    found = True 
-            
-            if not found: 
-                print("Buku dengan judul tersebut tidak ditemukan")
+        
     
     else: 
         print("Pilihan tidak valid")
@@ -158,10 +157,8 @@ def selector():
     for i in range(len(list_jumlahbuku)):
         list_jumlahbuku[i][1] = len(database_buku[datagenre[i]].values())
         print(list_jumlahbuku)
-    tampilkan_genre(datagenre)
+    searchbuku()
     
-    tampilandanketersediaan_buku(genre,page,i) #nanti ganti i nya pake variabel buat indexgenrenya
-        
 
     
     
