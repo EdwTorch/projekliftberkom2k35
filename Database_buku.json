@@ -1,6 +1,6 @@
-database_buku = {
+{
     "TEXTBOOK" : {
-        "1" : ["Kalkulus Jilid 1 Edisi 9", 30], #buku 1 berjudul "Kalkulus 1 Purcell dengan jumlah 30 buku
+        "1" : ["Kalkulus Jilid 1 Edisi 9", 30], 
         "2" : ["Kimia Dasar Jilid 1 Edisi 3", 30],
         "3" : ["Kimia Dasar Jilid 2 Edisi 3", 30],
         "4" : ["Biologi Jilid 1 Edisi 8", 30],
