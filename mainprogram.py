@@ -13,6 +13,7 @@ Kamus :
 """
 import time
 import json
+from datetime import date
 #contoh : 
 database_buku = {}
 database_peminjamanbuku = {}
@@ -33,8 +34,10 @@ def access_and_read_json():
     except FileNotFoundError: 
         print("Salah kode")
 
-def save_peminjaman():
-    pass
+def save_peminjaman(files):
+    with open(f"database_peminjaman.json","w") as filesavepeminjaman:
+        json.dump(files,filesavepeminjaman, indent=4)
+        
 def cek_denda():
     pass
 def pembayaran():
@@ -124,8 +127,8 @@ def searchbuku():
             else:
                 j = 0 
                 print("Genre tidak ditemukan")
-        
-        print(f"\nDaftar Buku dalam Genre {pilih_genre}")
+        print()
+        print(f"Daftar Buku dalam Genre {pilih_genre}")
         indexgenre = j 
         page_lokal = 1
         tampilandanketersediaan_buku(pilih_genre, page_lokal, indexgenre)
@@ -140,6 +143,7 @@ def searchbuku():
     
     else: 
         print("Pilihan tidak valid")
+        searchbuku()
 
 def redo():
     pass
@@ -149,7 +153,7 @@ def selector():
     global database_buku
     global list_jumlahbuku
     access_and_read_json()
-
+    #jangan lupa input tanggal
     datagenre = [key for key in database_buku]
     print(datagenre)
 
