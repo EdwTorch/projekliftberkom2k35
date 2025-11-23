@@ -40,6 +40,7 @@ def save_peminjaman(files):
         
 def cek_denda():
     pass
+
 def pembayaran():
     pass
 
@@ -73,7 +74,7 @@ def tampilandanketersediaan_buku(genre, page_lokal, indexgenre): #Status keterse
 
     if page_lokal == 1:
         while input_ulang_valid == "False":
-                state = int(input(f"Apakah anda ingin melihat daftar lanjutan dari {genre} {counttotalbuku+1}- {totalbukusaatini}? : (ketik 0 untuk tidak, 1 untuk ya) : "))
+                state = int(input(f"Apakah anda ingin melihat daftar lanjutan dari {genre} {counttotalbuku+1}-{totalbukusaatini}? (ketik 0 untuk tidak, 1 untuk ya) : "))
                 if state == 0 or state == 1:
                     input_ulang_valid = "True"
                 else:
@@ -81,7 +82,8 @@ def tampilandanketersediaan_buku(genre, page_lokal, indexgenre): #Status keterse
             
     if state == 1:
         page_lokal +=1
-        tampilandanketersediaan_buku(genre, page_lokal)
+        tampilandanketersediaan_buku(genre, page_lokal, indexgenre)
+        return 
 
     elif state == 0:
         pass
@@ -135,15 +137,26 @@ def searchbuku():
 
     #Pencarian berdasarkan judul 
     elif (pilihan_pencarian == "2"): 
-        keyword = input("Masukkan keyword judul: ").upper()
-        print("\nHasil Pencarian")
-        found = False 
-
+        keyword = input("Masukkan keyword judul: ").upper().strip()
         
-    
-    else: 
-        print("Pilihan tidak valid")
-        searchbuku()
+        for indexgenre, namagenre in enumerate(datagenre):
+            listbuku = [isibuku for isibuku in database_buku[namagenre].values()]
+
+            for buku in listbuku:
+                if keyword in buku[0].upper():
+                    print(f"Buku ditemukan pada genre {namagenre}")
+                    return 
+            
+        print(f"\nBuku dengan judul '{keyword}' tidak ditemukan")
+        lihatdaftar = input("Apakah Anda ingin melihat daftar buku per genre? (ketik 0 untuk tidak, 1 untuk ya) : ")
+
+        if lihatdaftar != "1":
+            print("Pencarian selesai")
+            return 
+            
+        for indexgenre, namagenre in enumerate(datagenre):
+            print(f"\nGenre {namagenre}")
+            tampilandanketersediaan_buku(namagenre, 1, indexgenre)
 
 def redo():
     pass
