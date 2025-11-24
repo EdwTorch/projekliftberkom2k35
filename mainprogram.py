@@ -206,8 +206,8 @@ def selector():
     5. Pengembalian buku
     """)
 
-    Pilihan=print("Masukkan pilihan: ")
-    if pilihan==1:
+    pilihan=print("Masukkan pilihan: ")
+    if pilihan ==1:
         tampilkan_genre(datagenre)
         genre=input("Genre yang ingin dilihat: ")
         tampilandanketersediaan_buku(genre)    
