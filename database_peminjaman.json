@@ -1,6 +1,14 @@
 {
-    "listbuku" : {
-        "1" : ["Nama","JudulBuku", "Jumlah"],
-        "2" : ["Nama","JudulBuku", "Jumlah"]
-    }
+    "listpeminjambuku" : [
+        {
+            "nama" : "nama1",
+            "judul": "judul1",
+            "tgl_peminjam" : "02-03-2025"
+        },
+        {
+            "nama" : "nama2",
+            "judul": "judul2",
+            "tgl_peminjam" : "04-03-2025"
+        }
+    ]
 }
