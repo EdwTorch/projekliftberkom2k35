@@ -186,6 +186,20 @@ def searchbuku():
 def redo():
     pass
 
+def next_action():
+    global datagenre
+    global database_buku
+    global list_jumlahbuku
+    access_and_read_json()
+    pilihan=input(print("Apakah ada hal yang ingin dilakukan lagi? (Iya ketik 1, tidak ketik 0): "))
+    if pilihan==1:
+        selector()
+    if pilihan==0:
+        print("Terima kasih telah menggunakan program ini!")
+    else:
+        print("Input tidak valid, masukkan angka 0/1")
+        next_action()
+
 def selector(): 
     global datagenre
     global database_buku
@@ -201,22 +215,44 @@ def selector():
         print(list_jumlahbuku)
     searchbuku()
 
-    print("""Perpustakaan WI1001
+    print("""Selamat Datang di Program Perpustakaan WI1001
     Halo! Ingin melakukan apa?
     1. Tampilkan ketersediaan buku
     2. Mencari buku
     3. Peminjaman buku
     4. Status peminjaman buku
     5. Pengembalian buku
+    6. Exit
     """)
 
     pilihan=print("Masukkan pilihan: ")
-    if pilihan ==1:
+    if pilihan==1:
         tampilkan_genre(datagenre)
         genre=input("Genre yang ingin dilihat: ")
-        tampilandanketersediaan_buku(genre)    
+        indexgenre=genre.index[genre]
+        tampilandanketersediaan_buku(genre, page_lokal, indexgenre)
+        next_action()
+        
+    elif pilihan==2:
+        searchbuku()
+        next_action()
+        
+    elif pilihan==3:
+        add_peminjaman_buku()
+        next_action()
+        
+    elif pilihan==4:
+        status_peminjaman_buku()
+        next_action()
+        
+    elif pilihan==5:
+        pengembalian_buku()
+        next_action()
+        
+    elif pilihan==6: 
+        exit
+    else :
+        print("Input anda tidak valid, silahkan masukkan input berupa angka dari 1--6")
+        selector()
 
-    
-    
-
-selector()
+print(selector())
