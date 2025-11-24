@@ -51,12 +51,16 @@ def tampilkan_genre(datagenre):
     for i in range(len(datagenre)):
         print(f"{i+1}. {datagenre[i]} ")
 
-def tampilandanketersediaan_buku(genre, page_lokal, indexgenre): #Status ketersediaan buku dan status buku sisa (per 15 judul) jadi next harus ada 
-    global database_buku
-    global list_jumlahbuku
+ #Status ketersediaan buku dan status buku sisa (per 15 judul) jadi next harus ada 
+def tampilandanketersediaan_buku(genre, page_lokal, indexgenre,database,jmlbuku): 
     input_ulang_valid = "False"
-    totalbukusaatini = list_jumlahbuku[indexgenre][1]
-    listbuku = [isibuku for isibuku in database_buku[genre].values()]
+    totalbukusaatini = jmlbuku[indexgenre][1]
+    i =0
+    listbuku = [["",0]for i in range(totalbukusaatini)]
+    for i in range(totalbukusaatini):
+        listbuku[i][0] = database[genre][i]["Judul"]
+        listbuku[i][1] = database[genre][i]["Jumlah"]
+    
     state = 0 
 
     if page_lokal == 1:
@@ -80,7 +84,7 @@ def tampilandanketersediaan_buku(genre, page_lokal, indexgenre): #Status keterse
                     input_ulang_valid = "True"
                 else:
                     print("Masukkan tidak valid tolong masukkan ulang")
-            
+
     if state == 1:
         page_lokal +=1
         tampilandanketersediaan_buku(genre, page_lokal, indexgenre)
@@ -154,7 +158,7 @@ def searchbuku():
         print(f"Daftar Buku dalam Genre {pilih_genre}")
         indexgenre = j 
         page_lokal = 1
-        tampilandanketersediaan_buku(pilih_genre, page_lokal, indexgenre)
+        tampilandanketersediaan_buku(pilih_genre, page_lokal, indexgenre,database_buku,list_jumlahbuku)
 
     #Pencarian berdasarkan judul 
     elif (pilihan_pencarian == "2"): 
@@ -193,7 +197,7 @@ def selector():
 
     list_jumlahbuku = [[datagenre[i],0] for i in range(len(datagenre))]
     for i in range(len(list_jumlahbuku)):
-        list_jumlahbuku[i][1] = len(database_buku[datagenre[i]].values())
+        list_jumlahbuku[i][1] = len(database_buku[datagenre[i]])
         print(list_jumlahbuku)
     searchbuku()
 
