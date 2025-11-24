@@ -13,7 +13,8 @@ Kamus :
 """
 import time
 import json
-from datetime import date
+from datetime import datetime
+from datetime import timedelta
 #contoh : 
 database_buku = {}
 database_peminjamanbuku = {}
@@ -91,8 +92,28 @@ def tampilandanketersediaan_buku(genre, page_lokal, indexgenre): #Status keterse
 def add_peminjaman_buku():
     pass
 
-def status_peminjaman_buku():
-    pass
+def status_peminjaman_buku(): #format outputnya belum rapih
+    global database_buku 
+    global database_peminjamanbuku
+
+    if len(database_peminjamanbuku) == 0: #baca database peminjam 
+        print()
+        print("[Data tidak tersedia]")
+    else: 
+        print()
+        print("================================================================================") 
+        print("|  NO  |  NAMA  |  JUDUL BUKU  |  TANGGAL PEMINJAMAN  |  TANGGAL PENGEMBALIAN  |") 
+        print("================================================================================")
+        for key, value in database_peminjamanbuku.items():
+            nama = value[0]
+            judul = value[1]
+            tanggal_peminjam = value[2]
+            #menghitung tanggal pengembalian
+            tanggal_peminjam1 = datetime.strptime(tanggal_peminjam, "%d-%m-%Y")
+            tanggal_pengembalian = tanggal_peminjam1 + timedelta(days=7)
+            tanggal_pengembalian1 = tanggal_pengembalian.strftime("%d-%m-%Y")
+
+            print(f"{key}{nama}{judul}{tanggal_peminjam}{tanggal_pengembalian1}")
 
 def pengembalian_buku():
     pass
