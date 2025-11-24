@@ -4,409 +4,409 @@
         "Judul": "Kalkulus Jilid 1 Edisi 9",
         "Jumlah": 30
         },
-  {
-    "Judul": "Kimia Dasar Jilid 1 Edisi 3",
-    "Jumlah": 30
-  },
-  {
-    "Judul": "Kimia Dasar Jilid 2 Edisi 3",
-    "Jumlah": 30
-  },
-  {
-    "Judul": "Biologi Jilid 1 Edisi 8",
-    "Jumlah": 30
-  },
-  {
-    "Judul": "Fisika Dasar Jilid 3 Edisi 7",
-    "Jumlah": 30
-  },
-  {
-    "Judul": "Buku Bahan-Bahan Listrik",
-    "Jumlah": 20
-  },
-  {
-    "Judul": "Material Teknik",
-    "Jumlah": 20
-  },
-  {
-    "Judul": "Buku Visualisasi 3D Pengantar dan Dasar Teori",
-    "Jumlah": 20
-  },
-  {
-    "Judul": "Gambar Teknik",
-    "Jumlah": 30
-  },
-  {
-    "Judul": "Modul Teknik Analisis dan Perencanaan Wilayah",
-    "Jumlah": 20
-  },
-  {
-    "Judul": "Supply Chain Management",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Dasar Cyber Security dan Forensic",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Rekayasa Lingkungan",
-    "Jumlah": 20
-  },
-  {
-    "Judul": "Kimia Teknik untuk Teknisi Pesawat Udara",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Buku Ajar Energi Baru dan Terbarukan",
-    "Jumlah": 20
-  },
-  {
-    "Judul": "Pengantar Teknologi Informasi",
-    "Jumlah": 20
-  },
-  {
-    "Judul": "Ilmu dan Teknologi Pengelasan",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Site Investigation on Soil and Rock",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Ergonomi dalam Transportasi",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Hidrologi Terapan",
-    "Jumlah": 10
-  }
+        {
+        "Judul": "Kimia Dasar Jilid 1 Edisi 3",
+        "Jumlah": 30
+        },
+        {
+        "Judul": "Kimia Dasar Jilid 2 Edisi 3",
+        "Jumlah": 30
+        },
+        {
+        "Judul": "Biologi Jilid 1 Edisi 8",
+        "Jumlah": 30
+        },
+        {
+        "Judul": "Fisika Dasar Jilid 3 Edisi 7",
+        "Jumlah": 30
+        },
+        {
+        "Judul": "Buku Bahan-Bahan Listrik",
+        "Jumlah": 20
+        },
+        {
+        "Judul": "Material Teknik",
+        "Jumlah": 20
+        },
+        {
+        "Judul": "Buku Visualisasi 3D Pengantar dan Dasar Teori",
+        "Jumlah": 20
+        },
+        {
+        "Judul": "Gambar Teknik",
+        "Jumlah": 30
+        },
+        {
+        "Judul": "Modul Teknik Analisis dan Perencanaan Wilayah",
+        "Jumlah": 20
+        },
+        {
+        "Judul": "Supply Chain Management",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Dasar Cyber Security dan Forensic",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Rekayasa Lingkungan",
+        "Jumlah": 20
+        },
+        {
+        "Judul": "Kimia Teknik untuk Teknisi Pesawat Udara",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Buku Ajar Energi Baru dan Terbarukan",
+        "Jumlah": 20
+        },
+        {
+        "Judul": "Pengantar Teknologi Informasi",
+        "Jumlah": 20
+        },
+        {
+        "Judul": "Ilmu dan Teknologi Pengelasan",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Site Investigation on Soil and Rock",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Ergonomi dalam Transportasi",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Hidrologi Terapan",
+        "Jumlah": 10   
+        }
     ],
     "KOMIK": [
-  {
-    "Judul": "Hai Miiko",
-    "Jumlah": 100
-  },
-  {
-    "Judul": "Detektif Conan",
-    "Jumlah": 300
-  },
-  {
-    "Judul": "Jujutsu Kaisen",
-    "Jumlah": 90
-  },
-  {
-    "Judul": "One Piece",
-    "Jumlah": 330
-  },
-  {
-    "Judul": "Death Note",
-    "Jumlah": 36
-  },
-  {
-    "Judul": "Naruto",
-    "Jumlah": 216
-  },
-  {
-    "Judul": "Crayon Shinchan",
-    "Jumlah": 150
-  },
-  {
-    "Judul": "Guardians of The Galaxy",
-    "Jumlah": 21
-  },
-  {
-    "Judul": "Si Juki",
-    "Jumlah": 15
-  },
-  {
-    "Judul": "Komik Next G",
-    "Jumlah": 100
-  },
-  {
-    "Judul": "Attack on Titan",
-    "Jumlah": 100
-  },
-  {
-    "Judul": "Fairy Tail",
-    "Jumlah": 100
-  },
-  {
-    "Judul": "Parasyte",
-    "Jumlah": 30
-  },
-  {
-    "Judul": "Dragon Ball",
-    "Jumlah": 100
-  },
-  {
-    "Judul": "Bleach",
-    "Jumlah": 200
-  },
-  {
-    "Judul": "Hunter X Hunter",
-    "Jumlah": 100
-  },
-  {
-    "Judul": "Demon Slayer",
-    "Jumlah": 60
-  },
-  {
-    "Judul": "Kimi ni Todoke",
-    "Jumlah": 100
-  },
-  {
-    "Judul": "Your Lie in April",
-    "Jumlah": 30
-  },
-  {
-    "Judul": "Skip and Loafer",
-    "Jumlah": 30
-  }
-],
+        {
+        "Judul": "Hai Miiko",
+        "Jumlah": 100
+        },
+        {
+        "Judul": "Detektif Conan",
+        "Jumlah": 300
+        },
+        {
+        "Judul": "Jujutsu Kaisen",
+        "Jumlah": 90
+        },
+        {
+        "Judul": "One Piece",
+        "Jumlah": 330
+        },
+        {
+        "Judul": "Death Note",
+        "Jumlah": 36
+        },
+        {
+        "Judul": "Naruto",
+        "Jumlah": 216
+        },
+        {
+        "Judul": "Crayon Shinchan",
+        "Jumlah": 150
+        },
+        {
+        "Judul": "Guardians of The Galaxy",
+        "Jumlah": 21
+        },
+        {
+        "Judul": "Si Juki",
+        "Jumlah": 15
+        },
+        {
+        "Judul": "Komik Next G",
+        "Jumlah": 100
+        },
+        {
+        "Judul": "Attack on Titan",
+        "Jumlah": 100
+        },
+        {
+        "Judul": "Fairy Tail",
+        "Jumlah": 100
+        },
+        {
+        "Judul": "Parasyte",
+        "Jumlah": 30
+        },
+        {
+        "Judul": "Dragon Ball",
+        "Jumlah": 100
+        },
+        {
+        "Judul": "Bleach",
+        "Jumlah": 200
+        },
+        {
+        "Judul": "Hunter X Hunter",
+        "Jumlah": 100
+        },
+        {
+        "Judul": "Demon Slayer",
+        "Jumlah": 60
+        },
+        {
+        "Judul": "Kimi ni Todoke",
+        "Jumlah": 100
+        },
+        {
+        "Judul": "Your Lie in April",
+        "Jumlah": 30
+        },
+        {
+        "Judul": "Skip and Loafer",
+        "Jumlah": 30
+        }
+    ],
     "NOVEL": [
-  {
-    "Judul": "Les Misérables",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Anne of Green Gables",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "To Kill a Mockingbird",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "The Great Gatsby",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Little Women",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Tenggelamnya Kapal Van Der Wijck",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Bumi Manusia",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Laskar Pelangi",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "1984",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Moby-Dick",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Animal Farm",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Harry Potter",
-    "Jumlah": 35
-  },
-  {
-    "Judul": "Metamorphosis",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Alice’s Adventures in Wonderland",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "The Little Prince",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Sherlock Holmes",
-    "Jumlah": 40
-  },
-  {
-    "Judul": "Frankenstein",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Emma",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Macbeth",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "All Quiet on the Western Front",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Romeo and Juliet",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Peter Pan",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Cantik Itu Luka",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "The Jungle Book",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Funiculi Funicula",
-    "Jumlah": 10
-  }
-],
+        {
+        "Judul": "Les Misérables",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Anne of Green Gables",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "To Kill a Mockingbird",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "The Great Gatsby",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Little Women",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Tenggelamnya Kapal Van Der Wijck",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Bumi Manusia",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Laskar Pelangi",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "1984",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Moby-Dick",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Animal Farm",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Harry Potter",
+        "Jumlah": 35
+        },
+        {
+        "Judul": "Metamorphosis",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Alice’s Adventures in Wonderland",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "The Little Prince",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Sherlock Holmes",
+        "Jumlah": 40
+        },
+        {
+        "Judul": "Frankenstein",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Emma",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Macbeth",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "All Quiet on the Western Front",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Romeo and Juliet",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Peter Pan",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Cantik Itu Luka",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "The Jungle Book",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Funiculi Funicula",
+        "Jumlah": 10
+        }
+    ],
     "ANAK": [
-  {
-    "Judul": "Timun Mas",
-    "Jumlah": 1
-  },
-  {
-    "Judul": "Bawang Merah dan Bawang Putih",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Malin Kundang",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Si Kancil Pencuri Mentimun",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Aku belajar ke toilet sendiri",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Tayo the Little Bus",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Mengenal Huruf ABC",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Kelinci dan Kura-kura",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Tiga Babi Kecil",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Pinokio",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "The Hurried Frog",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Ayo Belajar",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Inside Out 2",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Ada Apa dengan Mo?",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "My Little Pony",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Cocomelon",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Buku Pertamaku",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Oo! Rafi Belum Salat!",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Dinosaurus",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Kisah Pertamaku",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Rilakkuma Café",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Seri Berempati",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Alam Menakjubkan",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Cepat Belajar Membaca Dengan Aiueo",
-    "Jumlah": 5
-  },
-  {
-    "Judul": "Get Set Go! Sains",
-    "Jumlah": 5
-  }
-],
+        {
+        "Judul": "Timun Mas",
+        "Jumlah": 1
+        },
+        {
+        "Judul": "Bawang Merah dan Bawang Putih",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Malin Kundang",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Si Kancil Pencuri Mentimun",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Aku belajar ke toilet sendiri",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Tayo the Little Bus",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Mengenal Huruf ABC",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Kelinci dan Kura-kura",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Tiga Babi Kecil",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Pinokio",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "The Hurried Frog",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Ayo Belajar",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Inside Out 2",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Ada Apa dengan Mo?",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "My Little Pony",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Cocomelon",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Buku Pertamaku",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Oo! Rafi Belum Salat!",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Dinosaurus",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Kisah Pertamaku",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Rilakkuma Café",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Seri Berempati",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Alam Menakjubkan",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Cepat Belajar Membaca Dengan Aiueo",
+        "Jumlah": 5
+        },
+        {
+        "Judul": "Get Set Go! Sains",
+        "Jumlah": 5
+        }
+    ],
     "ENSIKLOPEDIA": [
-  {
-    "Judul": "Ensiklopedia Tubuh Manusia",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Ensiklopedia Bumi",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Ensiklopedia Sains",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Ensiklopedia Fauna Dunia",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Ensiklopedia Flora Dunia",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Ensiklopedia Alam Semesta",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Ensiklopedia Alam Semesta",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Ensiklopedia Sejarah Nasional dan Dunia",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Ensiklopedia Transportasi",
-    "Jumlah": 10
-  },
-  {
-    "Judul": "Ensiklopedia Geografi",
-    "Jumlah": 10
-  }
-]
+        {
+        "Judul": "Ensiklopedia Tubuh Manusia",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Ensiklopedia Bumi",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Ensiklopedia Sains",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Ensiklopedia Fauna Dunia",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Ensiklopedia Flora Dunia",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Ensiklopedia Alam Semesta",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Ensiklopedia Alam Semesta",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Ensiklopedia Sejarah Nasional dan Dunia",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Ensiklopedia Transportasi",
+        "Jumlah": 10
+        },
+        {
+        "Judul": "Ensiklopedia Geografi",
+        "Jumlah": 10
+        }
+    ]
 }
