@@ -196,7 +196,21 @@ def selector():
         list_jumlahbuku[i][1] = len(database_buku[datagenre[i]].values())
         print(list_jumlahbuku)
     searchbuku()
-    
+
+    print("""Perpustakaan WI1001
+    Halo! Ingin melakukan apa?
+    1. Tampilkan ketersediaan buku
+    2. Mencari buku
+    3. Peminjaman buku
+    4. Status peminjaman buku
+    5. Pengembalian buku
+    """)
+
+    Pilihan=print("Masukkan pilihan: ")
+    if pilihan==1:
+        tampilkan_genre(datagenre)
+        genre=input("Genre yang ingin dilihat: ")
+        tampilandanketersediaan_buku(genre)    
 
     
     
