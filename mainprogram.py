@@ -38,6 +38,11 @@ def access_and_read_json():
 def save_peminjaman(files):
     with open(f"database_peminjaman.json","w") as filesavepeminjaman:
         json.dump(files,filesavepeminjaman, indent=4)
+
+def access_peminjaman():
+    global database_peminjamanbuku
+    with open(f"database_peminjaman.json","r") as filepinjam:
+        database_peminjamanbuku = json.load(filepinjam)
         
 def cek_genre_buku_pinjaman(): #jujur ini kurang rapih dan agaknya ragu
     global judulpinjaman
@@ -298,10 +303,13 @@ def next_action():
 def selector(): 
     global datagenre
     global database_buku
+    global database_peminjamanbuku
     global list_jumlahbuku
     global formattgl
-
+    global page
     access_and_read_json()
+    access_peminjaman()
+    pagelokal= page
     #jangan lupa input tanggal
     tgl_hariini = input("Masukkan tanggal hari ini dengan format 'hari-bulan-tahun': ")
     formattgl = datetime.strptime(tgl_hariini, "%d-%m-%Y")
@@ -329,7 +337,7 @@ def selector():
         tampilkan_genre(datagenre)
         genre=input("Genre yang ingin dilihat: ")
         indexgenre=genre.index[genre]
-        tampilandanketersediaan_buku(genre, page_lokal, indexgenre)
+        tampilandanketersediaan_buku(genre, pagelokal, indexgenre)
         next_action()
         
     elif pilihan==2:
