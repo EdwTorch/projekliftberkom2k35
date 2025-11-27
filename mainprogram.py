@@ -96,28 +96,29 @@ def tampilandanketersediaan_buku(genre, page_lokal, indexgenre,database,jmlbuku)
 def add_peminjaman_buku():
     pass
 
-def status_peminjaman_buku(): #format outputnya belum rapih
+def status_peminjaman_buku(): 
     global database_buku 
     global database_peminjamanbuku
 
-    if len(database_peminjamanbuku) == 0: #baca database peminjam 
+    if len(database_peminjamanbuku["listpeminjambuku"]) == 0: #baca database peminjam 
         print()
         print("[Data tidak tersedia]")
     else: 
         print()
-        print("================================================================================") 
-        print("|  NO  |  NAMA  |  JUDUL BUKU  |  TANGGAL PEMINJAMAN  |  TANGGAL PENGEMBALIAN  |") 
-        print("================================================================================")
-        for key, value in database_peminjamanbuku.items():
-            nama = value[0]
-            judul = value[1]
-            tanggal_peminjam = value[2]
+        print("=======================================================") 
+        print("{:<10} {:<10} {:<15} {:<15}".format("NAMA", "JUDUL", "TGL PEMINJAMAN", "TGL PENGEMBALIAN ")) #Format
+        print("=======================================================")
+        i=0
+        for i in range (len(database_peminjamanbuku["listpeminjambuku"])):
+            nama = (database_peminjamanbuku["listpeminjambuku"][i]["nama"])
+            judul = (database_peminjamanbuku["listpeminjambuku"][i]["judul"])
+            tanggal_peminjam = (database_peminjamanbuku["listpeminjambuku"][i]["tgl_peminjam"])
             #menghitung tanggal pengembalian
             tanggal_peminjam1 = datetime.strptime(tanggal_peminjam, "%d-%m-%Y")
             tanggal_pengembalian = tanggal_peminjam1 + timedelta(days=7)
             tanggal_pengembalian1 = tanggal_pengembalian.strftime("%d-%m-%Y")
 
-            print(f"{key}{nama}{judul}{tanggal_peminjam}{tanggal_pengembalian1}")
+            print(f"{nama:<10} {judul:<10} {tanggal_peminjam:^15} {tanggal_pengembalian1:^15}")
 
 def pengembalian_buku():
     pass
