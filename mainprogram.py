@@ -91,13 +91,13 @@ def cek_denda(): #Kondisi buku diinput manual iyes
     print("{:<10} {:<10} {:<15} {:<15}".format("NAMA", "JUDUL", "TGL PEMINJAMAN", "TGL PENGEMBALIAN "))
     print("=======================================================")
 
-    nama = (database_peminjamanbuku["listpeminjambuku"][j]["nama"])
+    namapinjam = (database_peminjamanbuku["listpeminjambuku"][j]["nama"])
     judulpinjaman = (database_peminjamanbuku["listpeminjambuku"][j]["judul"])
     tgl_peminjam = (database_peminjamanbuku["listpeminjambuku"][j]["tgl_peminjam"])
     tgl_peminjamformat = datetime.strptime(tgl_peminjam, "%d-%m-%Y")
     tgl_pengembalian = tgl_peminjamformat + timedelta(days=7)
     tgl_pengembalianformat = tgl_pengembalian.strftime("%d-%m-%Y")
-    print(f"{nama:<10} {judulpinjaman:<10} {tgl_peminjam:^15} {tgl_pengembalianformat:^15}")
+    print(f"{namapinjam:<10} {judulpinjaman:<10} {tgl_peminjam:^15} {tgl_pengembalianformat:^15}")
     print()
     kondisi = input("Masukkan kondisi buku yang dikembalikan: ").upper
     if formattgl <= tgl_pengembalianformat and kondisi != "RUSAK" :
@@ -118,6 +118,7 @@ def cek_denda(): #Kondisi buku diinput manual iyes
         else:
             dendarusak = 50000
         print(f"Anda dikenakan denda sebesar Rp{dendarusak}")
+        pembayaran()
 
     elif formattgl >= tgl_pengembalianformat and kondisi == "RUSAK":
         deltahari = formattgl - tgl_pengembalianformat
@@ -138,6 +139,7 @@ def cek_denda(): #Kondisi buku diinput manual iyes
             dendarusak = 50000
         totaldenda = denda + dendarusak
         print(f"Anda dikenakan denda sebesar Rp{totaldenda}")
+        pembayaran()
 
     else: 
         deltahari = formattgl - tgl_pengembalianformat
@@ -145,6 +147,15 @@ def cek_denda(): #Kondisi buku diinput manual iyes
         deltahariint = deltahari.days
         denda = 2000 * deltahariint
         print(f"Anda dikenakan denda sebesar Rp{denda}")
+        pembayaran()
+    
+    pengembalian_selesai = {
+        "nama" : namapinjam,
+        "judul" : judulpinjaman,
+        "tgl_peminjam" : tgl_peminjam
+    }
+    database_peminjamanbuku["listpeminjambuku"].remove(pengembalian_selesai)
+    save_peminjaman(database_peminjamanbuku)
 
 def pembayaran():
     global database_peminjamanbuku
@@ -396,7 +407,7 @@ def status_peminjaman_buku():
             print(f"{nama:<10} {judul:<10} {tanggal_peminjam:^15} {tanggal_pengembalian1:^15}")
 
 def pengembalian_buku():
-    pass
+    cek_denda()
 
 def searchbuku():
     global database_buku
