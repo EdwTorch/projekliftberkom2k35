@@ -188,11 +188,10 @@ def tampilandanketersediaan_buku(genre, page_lokal, indexgenre,database,jmlbuku)
 
     if state == 1:
         page_lokal +=1
-        tampilandanketersediaan_buku(genre, page_lokal, indexgenre)
-        return 
+        tampilandanketersediaan_buku(genre, page_lokal, indexgenre,database_buku,list_jumlahbuku)
 
     elif state == 0:
-        pass
+        print()
 
 def add_peminjaman_buku():
     pass
@@ -291,7 +290,7 @@ def next_action():
     global database_buku
     global list_jumlahbuku
     access_and_read_json()
-    pilihan=input(print("Apakah ada hal yang ingin dilakukan lagi? (Iya ketik 1, tidak ketik 0): "))
+    pilihan=int(input("Apakah ada hal yang ingin dilakukan lagi? (Iya ketik 1, tidak ketik 0): "))
     if pilihan==1:
         selector()
     if pilihan==0:
@@ -313,14 +312,12 @@ def selector():
     #jangan lupa input tanggal
     tgl_hariini = input("Masukkan tanggal hari ini dengan format 'hari-bulan-tahun': ")
     formattgl = datetime.strptime(tgl_hariini, "%d-%m-%Y")
-    """datagenre = [key for key in database_buku]
-    print(datagenre)
-
+    datagenre = [key for key in database_buku]
+    validasi_genre = False
+    cek_genre = False
     list_jumlahbuku = [[datagenre[i],0] for i in range(len(datagenre))]
     for i in range(len(list_jumlahbuku)):
         list_jumlahbuku[i][1] = len(database_buku[datagenre[i]])
-        print(list_jumlahbuku)
-    searchbuku()"""
 
     print("""Selamat Datang di Program Perpustakaan WI1001
     Halo! Ingin melakukan apa?
@@ -331,13 +328,27 @@ def selector():
     5. Pengembalian buku
     6. Exit
     """)
-
+    cek_genre_buku_pinjaman()
     pilihan=int(input("Masukkan pilihan: "))
     if pilihan==1:
         tampilkan_genre(datagenre)
-        genre=input("Genre yang ingin dilihat: ")
-        indexgenre=genre.index[genre]
-        tampilandanketersediaan_buku(genre, pagelokal, indexgenre)
+        j = 0 
+        while validasi_genre == False: 
+            genre = input("Masukkan nama genre: ")
+            genre = genre.upper()
+            while cek_genre == False and j < len(datagenre): 
+                if (genre == datagenre[j]): 
+                    cek_genre = True
+                else: 
+                    j += 1
+
+            if (cek_genre == True): 
+                validasi_genre = True 
+
+            else:
+                j = 0 
+                print("Genre tidak ditemukan")
+        tampilandanketersediaan_buku(genre, pagelokal, j,database_buku,list_jumlahbuku)
         next_action()
         
     elif pilihan==2:
