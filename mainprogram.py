@@ -195,8 +195,70 @@ def tampilandanketersediaan_buku(genre, page_lokal, indexgenre,database,jmlbuku)
         pass
 
 def add_peminjaman_buku():
-    pass
+    global database_buku 
+    global database_peminjamanbuku
+    global formattgl
+    global judulpinjaman
 
+    #Cek apakah database buku kosong
+    if not database_buku: 
+        print("Database buku kosong. Pastikan database terisi.")
+        return
+
+    #Input nama peminjam dan judul buku 
+    nama = input("Masukkan nama peminjam: ").strip()
+    judul = input("Masukkan judul buku: ").strip()
+    judulpinjaman = judul
+
+    found = False 
+    found_genre = None
+    found_index = None 
+    
+    #Mencari judul buku yang ingin dipinjam 
+    for g, daftar in database_buku.items():
+        i = 0
+        while i < len(daftar):
+            buku = daftar[i]
+            if buku.get("Judul").upper() == judul.upper():
+                found = True 
+                found_genre = g
+                found_index = i
+            i += 1
+
+    if found == False: 
+        print(f"Buku dengan judul '{judul}' tidak ditemukan dalam database.")
+        return 
+    
+    #Mengecek stok buku dalam database
+    jumlah = database_buku[found_genre][found_index].get("Jumlah", 0)
+    if jumlah <= 0:
+        print(f"Maaf, stok buku '{judul}' sedang habis.")
+        return 
+    
+    if not ("listpeminjambuku" in database_peminjamanbuku):
+        database_peminjamanbuku["listpeminjambuku"] = []
+    
+    if isinstance(formattgl, datetime):
+        tgl_str = formattgl.strftime("%d-%m-%Y")
+    else: 
+        tgl_str = datetime.now().strftime("%d-%m-%Y")
+    
+    new_record = {
+        "nama": nama, 
+        "judul": judul,
+        "tgl_peminjam": tgl_str
+    }
+
+    #Masuk ke database peminjaman
+    database_peminjamanbuku["listpeminjambuku"].append(new_record)
+
+    #Mengurangi stok buku 
+    database_buku[found_genre][found_index]["Jumlah"] = jumlah - 1
+
+    save_peminjaman(database_peminjamanbuku)
+
+    print(f"Peminjaman buku '{judul}' oleh {nama} berhasil.")
+    
 def status_peminjaman_buku(): 
     global database_buku 
     global database_peminjamanbuku
