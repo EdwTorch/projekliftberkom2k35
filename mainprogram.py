@@ -304,13 +304,13 @@ def tampilandanketersediaan_buku(genre, page_lokal, indexgenre,database,jmlbuku)
                     input_ulang_valid = "True"
                 else:
                     print("Masukkan tidak valid tolong masukkan ulang")
-
+                    
     if state == 1:
         page_lokal +=1
         tampilandanketersediaan_buku(genre, page_lokal, indexgenre,database_buku,list_jumlahbuku)
 
     elif state == 0:
-        print()
+        return
 
 def add_peminjaman_buku():
     global database_buku 
@@ -450,25 +450,42 @@ def searchbuku():
     #Pencarian berdasarkan judul 
     elif (pilihan_pencarian == "2"): 
         keyword = input("Masukkan keyword judul: ").upper().strip()
+        k = 0
+        searchketemu = False
+        for indexgenre, namagenre in enumerate(datagenre):
+            listbuku = [[] for i in range(list_jumlahbuku[indexgenre][1])]
+            while k<len(database_buku[namagenre]):
+                satubuku = [isibuku for isibuku in database_buku[namagenre][k].values()]
+                listbuku[k] = satubuku
+                k+=1
+            for j in range(len(listbuku)):
+                if keyword in listbuku[j][0].upper():
+                    print(f"Buku ditemukan pada genre {namagenre} dengan judul {listbuku[j][0]} dengan ketersediaan {listbuku[j][1]}")
+                    searchketemu = True
+                elif keyword in listbuku[j][0].upper() and searchketemu == True:
+                    print()
+    
+            k = 0
+        if searchketemu == False:            
+            print(f"\nBuku dengan judul '{keyword}' tidak ditemukan")
+            lihatdaftar = input("Apakah Anda ingin melihat daftar buku per genre? (ketik 0 untuk tidak, 1 untuk ya) : ")
+
+            if lihatdaftar != "1":
+                print("Pencarian selesai")
+                return 
+            
+            indexgenre=0
+            selesailooptampilan = False
+            while indexgenre <5 and selesailooptampilan == False:
+                print(f"Genre {datagenre[indexgenre]}")
+                tampilandanketersediaan_buku(datagenre[indexgenre],1,indexgenre,database_buku,list_jumlahbuku)
+                validasi_lanjut = int(input("Apakah anda ingin melihat genre selanjutnya? (0 untuk tidak, 1 untuk iya) : "))
+                if validasi_lanjut == 1: 
+                    indexgenre+=1
+                elif validasi_lanjut ==0:
+                    selesailooptampilan = True
         
-        for indexgenre, namagenre in enumerate(datagenre):
-            listbuku = [isibuku for isibuku in database_buku[namagenre].values()]
 
-            for buku in listbuku:
-                if keyword in buku[0].upper():
-                    print(f"Buku ditemukan pada genre {namagenre}")
-                    return 
-            
-        print(f"\nBuku dengan judul '{keyword}' tidak ditemukan")
-        lihatdaftar = input("Apakah Anda ingin melihat daftar buku per genre? (ketik 0 untuk tidak, 1 untuk ya) : ")
-
-        if lihatdaftar != "1":
-            print("Pencarian selesai")
-            return 
-            
-        for indexgenre, namagenre in enumerate(datagenre):
-            print(f"\nGenre {namagenre}")
-            tampilandanketersediaan_buku(namagenre, 1, indexgenre)
 
 
 def next_action():
@@ -514,7 +531,6 @@ def selector():
     5. Pengembalian buku
     6. Exit
     """)
-    cek_genre_buku_pinjaman()
     pilihan=int(input("Masukkan pilihan: "))
     if pilihan==1:
         tampilkan_genre(datagenre)
