@@ -24,6 +24,7 @@ counter = 1
 page = 1
 genre = "TEXTBOOK"
 judulpinjaman = ""
+lastindex = len(database_peminjamanbuku)
 def access_and_read_json():
     global database_buku
     global list_jumlahbuku
@@ -365,17 +366,17 @@ def add_peminjaman_buku():
     
     if isinstance(formattgl, datetime):
         tgl_str = formattgl.strftime("%d-%m-%Y")
-    else: 
-        tgl_str = datetime.now().strftime("%d-%m-%Y")
+        tgl_balik = formattgl.strftime("%d-%m-%Y") + timedelta(7)
     
     new_record = {
         "nama": nama, 
         "judul": judul,
         "tgl_peminjam": tgl_str
+        "tgl_balik" : tgl_balik
     }
 
     #Masuk ke database peminjaman
-    database_peminjamanbuku["listpeminjambuku"].append(new_record)
+    database_peminjamanbuku["listpeminjambuku"][lastindex] = newrecord
 
     #Mengurangi stok buku 
     database_buku[found_genre][found_index]["Jumlah"] = jumlah - 1
@@ -387,6 +388,7 @@ def add_peminjaman_buku():
     print(f"Nama Peminjam : {nama}")
     print(f"Judul Buku    : {judul}")
     print(f"Tanggal Pinjam: {tgl_str}")
+    print(f"Tanggal Pengembalian : {tgl_balik}")
     print("===============================================")
     
 def status_peminjaman_buku(): 
@@ -509,27 +511,20 @@ def next_action():
         print("Input tidak valid, masukkan angka 0/1")
         next_action()
 
-def selector(): 
-    global datagenre
-    global database_buku
-    global database_peminjamanbuku
-    global list_jumlahbuku
-    global formattgl
-    global page
-    access_and_read_json()
-    access_peminjaman()
-    pagelokal= page
-    #jangan lupa input tanggal
-    tgl_hariini = input("Masukkan tanggal hari ini dengan format 'hari-bulan-tahun': ")
-    formattgl = datetime.strptime(tgl_hariini, "%d-%m-%Y")
-    datagenre = [key for key in database_buku]
-    validasi_genre = False
-    cek_genre = False
-    list_jumlahbuku = [[datagenre[i],0] for i in range(len(datagenre))]
-    for i in range(len(list_jumlahbuku)):
-        list_jumlahbuku[i][1] = len(database_buku[datagenre[i]])
-
-    print("""Selamat Datang di Program Perpustakaan WI1001
+programselesai = False
+access_and_read_json()
+access_peminjaman()
+pagelokal= page
+#jangan lupa input tanggal
+tgl_hariini = input("Masukkan tanggal hari ini dengan format 'hari-bulan-tahun': ")
+formattgl = datetime.strptime(tgl_hariini, "%d-%m-%Y")
+datagenre = [key for key in database_buku]
+validasi_genre = False
+cek_genre = False
+list_jumlahbuku = [[datagenre[i],0] for i in range(len(datagenre))]
+for i in range(len(list_jumlahbuku)):
+    list_jumlahbuku[i][1] = len(database_buku[datagenre[i]])
+print("""Selamat Datang di Program Perpustakaan WI1001
     Halo! Ingin melakukan apa?
     1. Tampilkan ketersediaan buku
     2. Mencari buku
@@ -538,48 +533,45 @@ def selector():
     5. Pengembalian buku
     6. Exit
     """)
-    pilihan=int(input("Masukkan pilihan: "))
-    if pilihan==1:
-        tampilkan_genre(datagenre)
-        j = 0 
-        while validasi_genre == False: 
-            genre = input("Masukkan nama genre: ")
-            genre = genre.upper()
-            while cek_genre == False and j < len(datagenre): 
-                if (genre == datagenre[j]): 
-                    cek_genre = True
-                else: 
-                    j += 1
+pilihan=int(input("Masukkan pilihan: "))
+if pilihan==1:
+    tampilkan_genre(datagenre)
+    j = 0 
+    while validasi_genre == False: 
+        genre = input("Masukkan nama genre: ")
+        genre = genre.upper()
+        while cek_genre == False and j < len(datagenre): 
+            if (genre == datagenre[j]): 
+                cek_genre = True
+            else: 
+                j += 1
 
-            if (cek_genre == True): 
-                validasi_genre = True 
+        if (cek_genre == True): 
+            validasi_genre = True 
 
-            else:
-                j = 0 
-                print("Genre tidak ditemukan")
-        tampilandanketersediaan_buku(genre, pagelokal, j,database_buku,list_jumlahbuku)
-        next_action()
+        else:
+            j = 0 
+            print("Genre tidak ditemukan")
+    tampilandanketersediaan_buku(genre, pagelokal, j,database_buku,list_jumlahbuku)
+    next_action()
         
-    elif pilihan==2:
-        searchbuku()
-        next_action()
+elif pilihan==2:
+    searchbuku()
+    next_action()
         
-    elif pilihan==3:
-        add_peminjaman_buku()
-        next_action()
+elif pilihan==3:
+    add_peminjaman_buku()
+    next_action()
         
-    elif pilihan==4:
-        status_peminjaman_buku()
-        next_action()
+elif pilihan==4:
+    status_peminjaman_buku()
+    next_action()
         
-    elif pilihan==5:
-        pengembalian_buku()
-        next_action()
+elif pilihan==5:
+    pengembalian_buku()
+    next_action()
         
-    elif pilihan==6: 
-        exit
-    else :
-        print("Input anda tidak valid, silahkan masukkan input berupa angka dari 1--6")
-        selector()
-
-selector()
+elif pilihan==6: 
+    exit
+else :
+    print("Input anda tidak valid, silahkan masukkan input berupa angka dari 1--6")
