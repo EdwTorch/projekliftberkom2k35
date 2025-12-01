@@ -166,7 +166,7 @@ def pembayaran():
     global database_buku 
     global formattgl 
     global judulpinjaman 
-
+    
     if "listpeminjambuku" not in database_peminjamanbuku:
         print("Tidak ada data peminjaman.")
         return 
@@ -237,7 +237,7 @@ def pembayaran():
     print("\n===== RINCIAN PEMBAYARAN =====")
     print(f"Nama Peminjam       : {nama}")
     print(f"Judul Buku          : {judul}")
-    print(f"Tanggal Pinjam      : {tgl_pinjam_str}")
+    print(f"Tanggal Pinjam      : {tgl_pinjam}")
     print(f"Tenggat Pengembalian: {tgl_deadline.strftime('%d-%m-%Y')}")
     print(f"Terlambat           : {terlambat} hari")
     print(f"Denda Telat         : Rp{denda_telat}")
@@ -371,12 +371,12 @@ def add_peminjaman_buku():
     new_record = {
         "nama": nama, 
         "judul": judul,
-        "tgl_peminjam": tgl_str
+        "tgl_peminjam": tgl_str,
         "tgl_balik" : tgl_balik
     }
 
     #Masuk ke database peminjaman
-    database_peminjamanbuku["listpeminjambuku"][lastindex] = newrecord
+    database_peminjamanbuku["listpeminjambuku"][lastindex] = new_record
 
     #Mengurangi stok buku 
     database_buku[found_genre][found_index]["Jumlah"] = jumlah - 1
