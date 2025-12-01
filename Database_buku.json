@@ -34,7 +34,7 @@
         },
         {
             "Judul": "Gambar Teknik",
-            "Jumlah": 30
+            "Jumlah": 29
         },
         {
             "Judul": "Modul Teknik Analisis dan Perencanaan Wilayah",
@@ -268,7 +268,7 @@
     "ANAK": [
         {
             "Judul": "Timun Mas",
-            "Jumlah": 0
+            "Jumlah": 1
         },
         {
             "Judul": "Bawang Merah dan Bawang Putih",
@@ -406,7 +406,7 @@
         },
         {
             "Judul": "Ensiklopedia Geografi",
-            "Jumlah": 10
+            "Jumlah": 11
         }
     ]
 }

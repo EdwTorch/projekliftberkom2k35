@@ -1,24 +1,35 @@
 {
     "listpeminjambuku": [
         {
-            "nama": "nama1",
-            "judul": "judul1",
-            "tgl_peminjam": "02-03-2025"
-        },
-        {
-            "nama": "nama2",
-            "judul": "judul2",
-            "tgl_peminjam": "04-03-2025"
-        },
-        {
             "nama": "jika",
             "judul": "Buku Bahan-Bahan ListriK",
-            "tgl_peminjam": "07-02-2020"
+            "tgl_peminjam": "07-02-2020",
+            "tgl_balik": "14-02-2020"
         },
         {
-            "nama": "jikapun",
-            "judul": "timun mas",
-            "tgl_peminjam": "02-02-2020"
-        }
-    ]
+            "nama": "bina",
+            "judul": "gambar teknik",
+            "tgl_peminjam": "15-03-2025",
+            "tgl_balik": "22-03-2025"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+    ],
+    "lastindex": 2
 }
