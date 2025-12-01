@@ -66,7 +66,7 @@ def cek_genre_buku_pinjaman(): #jujur ini kurang rapih dan agaknya ragu
     else: 
         print("Buku tidak ditemukan")
 
-def cek_denda(): #Kondisi buku diinput manual iyes
+def pengembalian_buku(): #Kondisi buku diinput manual iyes
     global database_peminjamanbuku
     global judulpinjaman
     global formattgl
@@ -100,10 +100,11 @@ def cek_denda(): #Kondisi buku diinput manual iyes
     tgl_peminjam = (database_peminjamanbuku["listpeminjambuku"][j]["tgl_peminjam"])
     tgl_peminjamformat = datetime.strptime(tgl_peminjam, "%d-%m-%Y")
     tgl_pengembalian = tgl_peminjamformat + timedelta(days=7)
-    tgl_pengembalianformat = tgl_pengembalian.strftime("%d-%m-%Y")
-    print(f"{namapinjam:<10} {judulpinjaman:<10} {tgl_peminjam:^15} {tgl_pengembalianformat:^15}")
+    tgl_pengembalian_str = tgl_pengembalian.strftime("%d-%m-%Y")
+    tgl_pengembalianformat = datetime.strptime(tgl_pengembalian_str,"%d-%m-%Y")
+    print(f"{namapinjam:<10} {judulpinjaman:<10} {tgl_peminjam:^15} {tgl_pengembalian_str:^15}")
     print()
-    kondisi = input("Masukkan kondisi buku yang dikembalikan (BAIK/RUSAK): ").upper
+    kondisi = input("Masukkan kondisi buku yang dikembalikan (BAIK/RUSAK): ").upper()
     if formattgl <= tgl_pengembalianformat and kondisi != "RUSAK" :
         print("Pengembalian buku tepat waktu dan kondisi buku baik.")
         print("Pengembalian buku selesai")
@@ -156,8 +157,21 @@ def cek_denda(): #Kondisi buku diinput manual iyes
     pengembalian_selesai = {
         "nama" : namapinjam,
         "judul" : judulpinjaman,
-        "tgl_peminjam" : tgl_peminjam
+        "tgl_peminjam" : tgl_peminjam,
+        "tgl_balik" : tgl_pengembalian
     }
+    found = False
+    while found == False:
+        for genrebukuyangdicari, daftar in database_buku.items():
+            i = 0
+            while i < len(daftar):
+                buku = daftar[i]
+                if buku.get("Judul").upper() == judulpinjaman.upper():
+                    found = True 
+                    found_genre = genrebukuyangdicari
+                    found_index = i
+                i += 1
+    database_buku[found_genre][i]["Jumlah"] +=1
     database_peminjamanbuku["listpeminjambuku"].remove(pengembalian_selesai)
     save_peminjaman(database_peminjamanbuku)
 
@@ -324,11 +338,10 @@ def add_peminjaman_buku():
 
     #Input nama peminjam dan judul buku 
     nama = input("Masukkan nama peminjam: ").strip()
-    k=0
     found = False 
     found_genre = ""
     found_index = 0
-    while k<5 and found == False:
+    while found == False:
         judul = input("Masukkan judul buku: ").strip()
         judulpinjaman = judul
 
@@ -415,8 +428,6 @@ def status_peminjaman_buku():
 
             print(f"{nama:<10} {judul:<10} {tanggal_peminjam:^15} {tanggal_pengembalian1:^15}")
 
-def pengembalian_buku():
-    cek_denda()
 
 def searchbuku():
     global database_buku
@@ -501,12 +512,12 @@ def next_action():
     global datagenre
     global database_buku
     global list_jumlahbuku
-    access_and_read_json()
     pilihan=int(input("Apakah ada hal yang ingin dilakukan lagi? (Iya ketik 1, tidak ketik 0): "))
-    if pilihan==1:
-        selector()
-    if pilihan==0:
+    if pilihan== 1:
+        print()
+    elif pilihan== 0:
         print("Terima kasih telah menggunakan program ini!")
+        exit
     else:
         print("Input tidak valid, masukkan angka 0/1")
         next_action()
