@@ -23,7 +23,7 @@ list_jumlahbuku = [["",0] for i in range(5)]
 counter = 1
 page = 1
 genre = "TEXTBOOK"
-
+judulpinjaman = ""
 def access_and_read_json():
     global database_buku
     global list_jumlahbuku
@@ -36,8 +36,11 @@ def access_and_read_json():
         print("Salah kode")
 
 def save_peminjaman(files):
+    global database_buku
     with open(f"database_peminjaman.json","w") as filesavepeminjaman:
         json.dump(files,filesavepeminjaman, indent=4)
+    with open(f"Database_buku.json","w") as filedatabase:
+        json.dump(database_buku,filedatabase, indent=4)
 
 def access_peminjaman():
     global database_peminjamanbuku
@@ -99,7 +102,7 @@ def cek_denda(): #Kondisi buku diinput manual iyes
     tgl_pengembalianformat = tgl_pengembalian.strftime("%d-%m-%Y")
     print(f"{namapinjam:<10} {judulpinjaman:<10} {tgl_peminjam:^15} {tgl_pengembalianformat:^15}")
     print()
-    kondisi = input("Masukkan kondisi buku yang dikembalikan: ").upper
+    kondisi = input("Masukkan kondisi buku yang dikembalikan (BAIK/RUSAK): ").upper
     if formattgl <= tgl_pengembalianformat and kondisi != "RUSAK" :
         print("Pengembalian buku tepat waktu dan kondisi buku baik.")
         print("Pengembalian buku selesai")
@@ -318,40 +321,44 @@ def add_peminjaman_buku():
     global formattgl
     global judulpinjaman
 
-    #Cek apakah database buku kosong
-    if not database_buku: 
-        print("Database buku kosong. Pastikan database terisi.")
-        return
-
     #Input nama peminjam dan judul buku 
     nama = input("Masukkan nama peminjam: ").strip()
-    judul = input("Masukkan judul buku: ").strip()
-    judulpinjaman = judul
-
+    k=0
     found = False 
-    found_genre = None
-    found_index = None 
-    
-    #Mencari judul buku yang ingin dipinjam 
-    for g, daftar in database_buku.items():
-        i = 0
-        while i < len(daftar):
-            buku = daftar[i]
-            if buku.get("Judul").upper() == judul.upper():
-                found = True 
-                found_genre = g
-                found_index = i
-            i += 1
+    found_genre = ""
+    found_index = 0
+    while k<5 and found == False:
+        judul = input("Masukkan judul buku: ").strip()
+        judulpinjaman = judul
 
-    if found == False: 
-        print(f"Buku dengan judul '{judul}' tidak ditemukan dalam database.")
-        return 
-    
-    #Mengecek stok buku dalam database
-    jumlah = database_buku[found_genre][found_index].get("Jumlah", 0)
-    if jumlah <= 0:
-        print(f"Maaf, stok buku '{judul}' sedang habis.")
-        return 
+        
+        
+        #Mencari judul buku yang ingin dipinjam 
+        for genrebukuyangdicari, daftar in database_buku.items():
+            i = 0
+            while i < len(daftar):
+                buku = daftar[i]
+                if buku.get("Judul").upper() == judul.upper():
+                    found = True 
+                    found_genre = genrebukuyangdicari
+                    found_index = i
+                i += 1
+
+        if found == False: 
+            print(f"Buku dengan judul '{judul}' tidak ditemukan dalam database.")
+        elif found == True:
+            jumlah = database_buku[found_genre][found_index].get("Jumlah", 0)
+            if jumlah == 0:
+                print(f"Maaf, stok buku '{judul}' sedang habis. Silahkan pinjam buku lain")
+                found = False
+            print("Apakah anda ingin melihat daftar judul terlebih dahulu ? ") 
+        
+        if found == False:
+            lihatjudul = int(input("Masukkan 1 jika ya, 0 jika tidak : "))
+            if lihatjudul == 0: 
+                print()
+            elif lihatjudul ==1: 
+                searchbuku()
     
     if not ("listpeminjambuku" in database_peminjamanbuku):
         database_peminjamanbuku["listpeminjambuku"] = []
@@ -372,7 +379,7 @@ def add_peminjaman_buku():
 
     #Mengurangi stok buku 
     database_buku[found_genre][found_index]["Jumlah"] = jumlah - 1
-
+    print("")
     save_peminjaman(database_peminjamanbuku)
 
     print()
