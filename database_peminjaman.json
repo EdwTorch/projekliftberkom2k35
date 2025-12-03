@@ -1,12 +1,6 @@
 {
     "listpeminjambuku": [
         {
-            "nama": "jika",
-            "judul": "Buku Bahan-Bahan ListriK",
-            "tgl_peminjam": "07-02-2020",
-            "tgl_balik": "14-02-2020"
-        },
-        {
             "nama": "bina",
             "judul": "gambar teknik",
             "tgl_peminjam": "15-03-2025",
@@ -29,7 +23,8 @@
         {},
         {},
         {},
+        {},
         {}
     ],
-    "lastindex": 2
+    "lastindex": 1
 }

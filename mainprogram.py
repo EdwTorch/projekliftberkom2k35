@@ -55,16 +55,17 @@ def cek_genre_buku_pinjaman(): #jujur ini kurang rapih dan agaknya ragu
     global genre
     cek_judul = False
 
-    while cek_judul == False:
-        for genre, daftarbuku in database_buku.items():
-            for buku in daftarbuku:
-                if judulpinjaman.upper() == buku["Judul"].upper():
-                    cek_judul = True
-                    genrebuku = genre
+    for genre, daftarbuku in database_buku.items():
+        for buku in daftarbuku:
+            if judulpinjaman.upper() == buku["Judul"].upper():
+                cek_judul = True
+                genrebuku = genre
     if cek_judul == True:
         print(f"Buku '{judulpinjaman} termasuk kedalam genre: {genrebuku}")
+        return True
     else: 
-        print("Buku tidak ditemukan")
+        print("Buku tidak ada dalam koleksi")
+        return False
 
 def pengembalian_buku(): #Kondisi buku diinput manual iyes
     global database_peminjamanbuku
@@ -111,41 +112,47 @@ def pengembalian_buku(): #Kondisi buku diinput manual iyes
 
     elif formattgl <= tgl_pengembalianformat and kondisi == "RUSAK":
         print("Pengembalian buku tepat waktu. Namun kondisi buku rusak")
-        cek_genre_buku_pinjaman()
-        if genrebuku == "TEXTBOOK":
-            dendarusak = 70000
-        elif genrebuku == "NOVEL":
-            dendarusak = 80000
-        elif genrebuku == "ANAK":
-            dendarusak = 50000
-        elif genrebuku == "ENSIKLOPEDIA":
-            dendarusak = 100000
+        bukuada = cek_genre_buku_pinjaman()
+        if bukuada == True: 
+            if genrebuku == "TEXTBOOK":
+                dendarusak = 70000
+            elif genrebuku == "NOVEL":
+                dendarusak = 80000
+            elif genrebuku == "ANAK":
+                dendarusak = 50000
+            elif genrebuku == "ENSIKLOPEDIA":
+                dendarusak = 100000
+            else:
+                dendarusak = 50000
+            print(f"Anda dikenakan denda sebesar Rp{dendarusak}")
+            pembayaran(namapinjam,judulpinjaman,tgl_peminjam,tgl_pengembalian_str,deltahariint,0,dendarusak,dendarusak)
         else:
-            dendarusak = 50000
-        print(f"Anda dikenakan denda sebesar Rp{dendarusak}")
-        pembayaran(namapinjam,judulpinjaman,tgl_peminjam,tgl_pengembalian_str,deltahariint,0,dendarusak,dendarusak)
+            print("Database bermasalah tolong perbaiki")
+            exit()
 
     elif formattgl >= tgl_pengembalianformat and kondisi == "RUSAK":
         deltahari = formattgl - tgl_pengembalianformat
         print(f"Anda terlambat mengembalikan buku selama {deltahari.days} hari dan kondisi buku rusak.")
         deltahariint = deltahari.days
         denda_telat = 2000 * deltahariint
-        cek_genre_buku_pinjaman()
-
-        if genrebuku == "TEXTBOOK":
-            dendarusak = 70000
-        elif genrebuku == "NOVEL":
-            dendarusak = 80000
-        elif genrebuku == "ANAK":
-            dendarusak = 50000
-        elif genrebuku == "ENSIKLOPEDIA":
-            dendarusak = 100000
-        else:
-            dendarusak = 50000
-        totaldenda = denda_telat + dendarusak
-        print(f"Anda dikenakan denda sebesar Rp{totaldenda}")
-        pembayaran(namapinjam,judulpinjaman,tgl_peminjam,tgl_pengembalian_str,deltahariint,denda_telat,dendarusak,totaldenda)
-
+        bukuada = cek_genre_buku_pinjaman()
+        if bukuada == True:
+            if genrebuku == "TEXTBOOK":
+                dendarusak = 70000
+            elif genrebuku == "NOVEL":
+                dendarusak = 80000
+            elif genrebuku == "ANAK":
+                dendarusak = 50000
+            elif genrebuku == "ENSIKLOPEDIA":
+                dendarusak = 100000
+            else:
+                dendarusak = 50000
+            totaldenda = denda_telat + dendarusak
+            print(f"Anda dikenakan denda sebesar Rp{totaldenda}")
+            pembayaran(namapinjam,judulpinjaman,tgl_peminjam,tgl_pengembalian_str,deltahariint,denda_telat,dendarusak,totaldenda)
+        else: 
+            print("Database anda bermasalah tolong perbaiki")
+            exit()
     else: 
         deltahari = formattgl - tgl_pengembalianformat
         print(f"Anda terlambat mengembalikan buku selama {deltahari.days} hari.")
