@@ -90,8 +90,7 @@ def pengembalian_buku(): #Kondisi buku diinput manual iyes
             j = 0
 
     #Menampilkan data pinjaman peminjam
-    print("Data Pinjaman:")
-    print()
+    print("Data Pinjaman:\n")
     print("=======================================================") 
     print("{:<10} {:<10} {:<15} {:<15}".format("NAMA", "JUDUL", "TGL PEMINJAMAN", "TGL PENGEMBALIAN "))
     print("=======================================================")
@@ -103,8 +102,8 @@ def pengembalian_buku(): #Kondisi buku diinput manual iyes
     tgl_pengembalian = tgl_peminjamformat + timedelta(days=7)
     tgl_pengembalian_str = tgl_pengembalian.strftime("%d-%m-%Y")
     tgl_pengembalianformat = datetime.strptime(tgl_pengembalian_str,"%d-%m-%Y")
-    print(f"{namapinjam:<10} {judulpinjaman:<10} {tgl_peminjam:^15} {tgl_pengembalian_str:^15}")
-    print()
+    print(f"{namapinjam:<10} {judulpinjaman:<10} {tgl_peminjam:^15} {tgl_pengembalian_str:^15}\n")
+    
     kondisi = input("Masukkan kondisi buku yang dikembalikan (BAIK/RUSAK): ").upper()
     if formattgl <= tgl_pengembalianformat and kondisi != "RUSAK" :
         print("Pengembalian buku tepat waktu dan kondisi buku baik.")
@@ -252,16 +251,14 @@ def tampilandanketersediaan_buku(genre, page_lokal, indexgenre,database,jmlbuku)
     if page_lokal == 1:
         counttotalbuku = totalbukusaatini//2
         for i in range(counttotalbuku):
-            print(f"{i+1}. {listbuku[i][0]} tersedia sejumlah {listbuku[i][1]}")
-            print()
-            print()
+            print(f"{i+1}. {listbuku[i][0]} tersedia sejumlah {listbuku[i][1]}\n\n")
+
 
     else: 
         counttotalbuku = totalbukusaatini - totalbukusaatini//2
         for i in range(counttotalbuku,totalbukusaatini):
-            print(f"{i+1}. {listbuku[i][0]} tersedia sejumlah {listbuku[i][1]}")
-            print()
-            print()
+            print(f"{i+1}. {listbuku[i][0]} tersedia sejumlah {listbuku[i][1]}\n\n")
+
 
     if page_lokal == 1:
         while input_ulang_valid == "False":
@@ -287,6 +284,7 @@ def add_peminjaman_buku():
     #Input nama peminjam dan judul buku 
     nama = input("Masukkan nama peminjam: ").strip()
     found = False 
+    found_stok = True
     found_genre = ""
     found_index = 0
     while found == False:
@@ -312,10 +310,10 @@ def add_peminjaman_buku():
             jumlah = database_buku[found_genre][found_index].get("Jumlah", 0)
             if jumlah == 0:
                 print(f"Maaf, stok buku '{judul}' sedang habis. Silahkan pinjam buku lain")
-                found = False
+                found_stok = False
             print("Apakah anda ingin melihat daftar judul terlebih dahulu ? ") 
         
-        if found == False:
+        if found_stok == False:
             lihatjudul = int(input("Lihat daftar judul buku ? (Masukkan 1 jika ya, 0 jika tidak) : "))
             if lihatjudul == 0: 
                 print()
@@ -342,7 +340,7 @@ def add_peminjaman_buku():
     print("")
     save_peminjaman(database_peminjamanbuku)
 
-    print()
+
     print("===============================================")
     print(f"Nama Peminjam : {nama}")
     print(f"Judul Buku    : {judul}")
@@ -355,10 +353,8 @@ def status_peminjaman_buku():
     global database_peminjamanbuku
 
     if len(database_peminjamanbuku["listpeminjambuku"]) == 0: #baca database peminjam 
-        print()
         print("[Data tidak tersedia]")
     else: 
-        print()
         print("=======================================================") 
         print("{:<10} {:<10} {:<15} {:<15}".format("NAMA", "JUDUL", "TGL PEMINJAMAN", "TGL PENGEMBALIAN ")) #Format
         print("=======================================================")
