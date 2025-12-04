@@ -385,9 +385,7 @@ def searchbuku():
     global datagenre 
     global list_jumlahbuku
     global genre
-    validasi_genre = False
-    cek_genre = False 
-
+    j=0
     print("1. Cari berdasarkan genre")
     print("2. Cari berdasarkan judul")
     pilihan_pencarian = input("Masukkan pilihan (1/2): ")
@@ -396,22 +394,7 @@ def searchbuku():
     if (pilihan_pencarian == "1"): 
         tampilkan_genre(datagenre)
         
-        j = 0 
-        while validasi_genre == False: 
-            pilih_genre = input("Masukkan nama genre: ")
-            pilih_genre = pilih_genre.upper()
-            while cek_genre == False and j < len(datagenre): 
-                if (pilih_genre == datagenre[j]): 
-                    cek_genre = True
-                else: 
-                    j += 1
-
-            if (cek_genre == True): 
-                validasi_genre = True 
-
-            else:
-                j = 0 
-                print("Genre tidak ditemukan")
+        pilih_genre, indexgenre=prosedur_validasi_genre()
         print()
         print(f"Daftar Buku dalam Genre {pilih_genre}")
         indexgenre = j 
@@ -472,6 +455,28 @@ def next_action():
     else:
         print("Input tidak valid, masukkan angka 0/1")
         next_action()
+def prosedur_validasi_genre():
+    j = 0 
+    global validasi_genre
+    cek_genre = False
+    while validasi_genre == False: 
+        genre = input("Masukkan nama genre: ")
+        genre = genre.upper()
+        while cek_genre == False and j < len(datagenre): 
+            if (genre == datagenre[j]): 
+                cek_genre = True
+            else: 
+                j += 1
+
+        if (cek_genre == True): 
+            validasi_genre = True 
+        else:
+            j = 0 
+            print("Genre tidak ditemukan")
+    validasi_genre = False
+    cek_genre = False
+    return genre,j
+    
 
 programselesai = False
 access_and_read_json()
@@ -500,22 +505,8 @@ while programselesai == False:
     pilihan=int(input("Masukkan pilihan: "))
     if pilihan==1:
         tampilkan_genre(datagenre)
-        j = 0 
-        while validasi_genre == False: 
-            genre = input("Masukkan nama genre: ")
-            genre = genre.upper()
-            while cek_genre == False and j < len(datagenre): 
-                if (genre == datagenre[j]): 
-                    cek_genre = True
-                else: 
-                    j += 1
-
-            if (cek_genre == True): 
-                validasi_genre = True 
-
-            else:
-                j = 0 
-                print("Genre tidak ditemukan")
+        genre,j = prosedur_validasi_genre()
+        print(genre,j)
         tampilandanketersediaan_buku(genre, pagelokal, j,database_buku,list_jumlahbuku)
         state = next_action()
             
