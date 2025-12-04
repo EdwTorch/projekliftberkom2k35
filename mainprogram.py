@@ -451,7 +451,7 @@ def next_action():
         return "Ulang"
     elif pilihan== 0:
         print("Terima kasih telah menggunakan program ini!")
-        exit()
+        return 0
     else:
         print("Input tidak valid, masukkan angka 0/1")
         next_action()
@@ -491,6 +491,7 @@ cek_genre = False
 list_jumlahbuku = [[datagenre[i],0] for i in range(len(datagenre))]
 for i in range(len(list_jumlahbuku)):
     list_jumlahbuku[i][1] = len(database_buku[datagenre[i]])
+state = ""
 while programselesai == False:
     lastindex = database_peminjamanbuku["lastindex"]
     print("""Selamat Datang di Program Perpustakaan WI1001
@@ -506,7 +507,6 @@ while programselesai == False:
     if pilihan==1:
         tampilkan_genre(datagenre)
         genre,j = prosedur_validasi_genre()
-        print(genre,j)
         tampilandanketersediaan_buku(genre, pagelokal, j,database_buku,list_jumlahbuku)
         state = next_action()
             
@@ -527,8 +527,10 @@ while programselesai == False:
         state = next_action()
             
     elif pilihan==6: 
-        exit()
+        programselesai= True
     else :
         print("Input anda tidak valid, silahkan masukkan input berupa angka dari 1--6")
     if state == "Ulang":
         print()
+    else: 
+        programselesai = True
