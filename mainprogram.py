@@ -413,11 +413,13 @@ def add_peminjaman_buku():
 
         if found == False: 
             print(f"Buku dengan judul '{judul}' tidak ditemukan dalam database.")
+            found_stok = False
         elif found == True:
             jumlah = database_buku[found_genre][found_index].get("Jumlah", 0)
             if jumlah == 0:
                 print(f"Maaf, stok buku '{judul}' sedang habis. Silahkan pinjam buku lain")
                 found_stok = False
+                found = False
         
         if found_stok == False: #Liat list judul
             lihatjudul = int(input("Lihat daftar judul buku ? (Masukkan 1 jika ya, 0 jika tidak) : "))
