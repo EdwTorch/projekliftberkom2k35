@@ -438,6 +438,9 @@ def searchbuku():
                     indexgenre+=1
                 elif validasi_lanjut ==0:
                     selesailooptampilan = True
+    else: 
+        return
+        
         
 
 
@@ -457,7 +460,7 @@ def next_action():
         next_action()
 def prosedur_validasi_genre():
     j = 0 
-    global validasi_genre
+    validasi_genre = False
     cek_genre = False
     while validasi_genre == False: 
         genre = input("Masukkan nama genre: ")
@@ -473,8 +476,7 @@ def prosedur_validasi_genre():
         else:
             j = 0 
             print("Genre tidak ditemukan")
-    validasi_genre = False
-    cek_genre = False
+            
     return genre,j
     
 
