@@ -6,7 +6,12 @@
             "tgl_peminjam": "15-03-2025",
             "tgl_balik": "22-03-2025"
         },
-        {},
+        {
+            "nama": "jinjit",
+            "judul": "si juki",
+            "tgl_peminjam": "10-10-2020",
+            "tgl_balik": "17-10-2020"
+        },
         {},
         {},
         {},
@@ -26,5 +31,5 @@
         {},
         {}
     ],
-    "lastindex": 1
+    "lastindex": 2
 }

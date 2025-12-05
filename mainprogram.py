@@ -393,13 +393,12 @@ def add_peminjaman_buku():
     #Input nama peminjam dan judul buku 
     nama = input("Masukkan nama peminjam: ").strip()
     found = False 
-    found_stok = True
     found_genre = ""
     found_index = 0
     while found == False:
         judul = input("Masukkan judul buku: ").strip()
         judulpinjaman = judul
-
+        found_stok = True
         #Mencari judul buku yang ingin dipinjam 
         for genrebukuyangdicari, daftar in database_buku.items():
             i = 0
@@ -638,7 +637,8 @@ while programselesai == False:
         2. Peminjaman buku
         3. Status peminjaman buku
         4. Pengembalian buku
-        5. Exit
+        5. Ganti tanggal
+        6. Exit
         """)
     pilihan=int(input("Masukkan pilihan: "))
     if pilihan==1:
@@ -658,6 +658,10 @@ while programselesai == False:
         state= next_action()
             
     elif pilihan==5:
+        tgl_hariini = input("Masukkan tanggal hari ini dengan format 'hari-bulan-tahun': ")
+        formattgl = datetime.strptime(tgl_hariini, "%d-%m-%Y")
+        state = next_action()
+    elif pilihan==6: 
         programselesai= True
     else :
         print("Input anda tidak valid, silahkan masukkan input berupa angka dari 1--5")
