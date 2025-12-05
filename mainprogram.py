@@ -664,7 +664,7 @@ while programselesai == False:
     elif pilihan==6: 
         programselesai= True
     else :
-        print("Input anda tidak valid, silahkan masukkan input berupa angka dari 1--5")
+        print("Input anda tidak valid, silahkan masukkan input berupa angka dari 1--6")
     if state == "Ulang":
         print()
     else: 
