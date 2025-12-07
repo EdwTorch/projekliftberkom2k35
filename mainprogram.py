@@ -77,7 +77,7 @@ def access_peminjaman():
     with open(f"database_peminjaman.json","r") as filepinjam:
         database_peminjamanbuku = json.load(filepinjam)
         
-def cek_genre_buku_pinjaman(): #jujur ini kurang rapih dan agaknya ragu
+def cek_genre_buku_pinjaman(): 
     global judulpinjaman
     global database_buku
     global genrebuku 
@@ -104,7 +104,7 @@ def cek_genre_buku_pinjaman(): #jujur ini kurang rapih dan agaknya ragu
         print("Buku tidak ada dalam koleksi")
         return False
 
-def pengembalian_buku(): #Kondisi buku diinput manual iyes
+def pengembalian_buku(): #Pengembalian Buku dan Kondisi buku diinput manual 
     global database_peminjamanbuku
     global judulpinjaman
     global formattgl
